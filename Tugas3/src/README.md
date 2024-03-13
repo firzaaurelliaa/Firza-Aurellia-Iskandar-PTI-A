@@ -17,4 +17,4 @@ Class Diagram yang dibuat :
 4. Barista
 
 🔗 Link Penjelasan Tugas
-https
+https://youtu.be/WIPrQwv6yrI?si=vJluzKwYfI8LkUz5

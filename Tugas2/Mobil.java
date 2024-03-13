@@ -1,59 +1,77 @@
+import java.util.Scanner;
+
 public class Mobil {
-private String noPlat;
-private String warna;
-private String manufaktur;
-private int kecepatan;
-public double waktu;
-public double ubahSatuanWaktu;
-public double gantiKecepatan;
-public double hitungJarak;
-public double gantiSatuanJarak;
+    private String noPlat;
+    private String warna;
+    private String manufaktur;
+    private double kecepatan; // Menggunakan double untuk kecepatan dalam m/s
+    private double waktu;
 
-public void setNoPlat(String s){
-noPlat = s;
-}
-public void setWarna(String s){
-warna = s;
-}
-public void setManufaktur(String s){
-manufaktur = s;
-}
-public void setKecepatan(int i){
-kecepatan = i;
-rubahKecepatan(kecepatan);		
-}
+    public void setNoPlat(String s) {
+        noPlat = s;
+    }
 
-public void setWaktu (double wkt) {
-    waktu = wkt;
-    rubahSekon(waktu);
-    //System.out.println("Waktu anda = "+waktu);
-}
-private void rubahSekon (double gantiSatuanWaktu) {
-    ubahSatuanWaktu = 3600 * gantiSatuanWaktu;
-    System.out.println("Waktu anda setelah dikonversi ke detik adalah "+ubahSatuanWaktu+" sekon");
-}
-private void rubahKecepatan (double gantiSatuanKecepatan) {
-    gantiKecepatan = (kecepatan*1000)/3600;
-    System.out.println("Kecepatan anda setelah dikonversi ke m/s adalah "+gantiKecepatan+" m/s");
-}
+    public void setWarna(String s) {
+        warna = s;
+    }
 
-public double hitungJarak() {
-    hitungJarak = kecepatan*waktu;
-    System.out.println("Hasil hitung kecepatan sementara "+waktu);
-    return hitungJarak;
-}
-public double gantiSatuanJarak() {
-    gantiSatuanJarak = hitungJarak/1000;
-    //System.out.println(hitungJarak);
-    return gantiSatuanJarak;
-}
+    public void setManufaktur(String s) {
+        manufaktur = s;
+    }
 
-public void displayMessage(){			
-System.out.println("Mobil anda adalah bermerek "+manufaktur);			
-System.out.println("mempunyai nomor plat "+noPlat);
-System.out.println("serta memililki warna "+warna);
-System.out.println("dan mampu menempuh kecepatan "+kecepatan);
-System.out.println("Jarak yang dapat ditempuh adalah "+hitungJarak());
-System.out.println("Jarak anda setelah dikonversi ke km adalah "+gantiSatuanJarak());
-}			
+    private double rubahKecepatan(double kecepatanKmh) {
+        // Mengonversi kecepatan dari km/h menjadi m/s
+        return kecepatanKmh * 1000 / 3600;
+    }
+
+    public void setKecepatan(double kecepatanKmh) {
+        kecepatan = rubahKecepatan(kecepatanKmh);
+    }
+
+    public void setWaktu(double jam) {
+        waktu = jam * 3600; // Mengonversi waktu dari jam ke detik
+    }
+
+    public double hitungJarak() {
+        return kecepatan * waktu / 1000; // Menghitung jarak dalam kilometer
+    }
+
+    public void displayMessage() {
+        System.out.println("Mobil anda adalah bermerek " + manufaktur);
+        System.out.println("mempunyai nomor plat " + noPlat);
+        System.out.println("serta memiliki warna " + warna);
+        System.out.println("dan mampu menempuh kecepatan " + kecepatan + " m/s dalam waktu " + waktu + " detik.");
+        System.out.println("Jarak yang dapat ditempuh adalah " + hitungJarak() + " km.");
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Mobil mobil = new Mobil();
+
+        System.out.println("Masukkan kecepatan mobil (km/jam):");
+        double kecepatan = scanner.nextDouble();
+        mobil.setKecepatan(kecepatan);
+
+        System.out.println("Masukkan merk mobil:");
+        String merk = scanner.next();
+        mobil.setManufaktur(merk);
+
+        System.out.println("Masukkan nomor plat mobil:");
+        String noPlat = scanner.next();
+        mobil.setNoPlat(noPlat);
+
+        System.out.println("Masukkan warna mobil:");
+        String warna = scanner.next();
+        mobil.setWarna(warna);
+
+        System.out.println("Masukkan waktu perjalanan mobil (jam):");
+        double waktu = scanner.nextDouble();
+        mobil.setWaktu(waktu);
+
+        System.out.println("================");
+        System.out.println("Informasi mobil:");
+        mobil.displayMessage();
+
+        scanner.close();
+    }
 }

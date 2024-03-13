@@ -1,7 +1,6 @@
     package Tugas3.src;
 
     import java.util.Scanner;
-
     public class MainFreelancer {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
