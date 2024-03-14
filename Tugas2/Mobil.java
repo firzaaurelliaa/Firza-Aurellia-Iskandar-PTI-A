@@ -28,14 +28,18 @@ public class Mobil {
         kecepatan = rubahKecepatan(kecepatanKmh);
     }
 
+
+
     public void setWaktu(double jam) {
         waktu = jam * 3600; // Mengonversi waktu dari jam ke detik
     }
 
+  
     public double hitungJarak() {
         return kecepatan * waktu / 1000; // Menghitung jarak dalam kilometer
     }
 
+  
     public void displayMessage() {
         System.out.println("Mobil anda adalah bermerek " + manufaktur);
         System.out.println("mempunyai nomor plat " + noPlat);
