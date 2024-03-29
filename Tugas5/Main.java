@@ -40,7 +40,7 @@ public class Main {
                     case 2:
                         usernameLogin = login(users, scanner);
                         if (usernameLogin != null) {
-                            isLoggedIn = true; // Set isLoggedIn menjadi true jika login berhasil
+                            isLoggedIn = true; 
                             clearScreen();
                             Home.show(usernameLogin, nomorPelanggan(), saldo, users);
                         } else {
