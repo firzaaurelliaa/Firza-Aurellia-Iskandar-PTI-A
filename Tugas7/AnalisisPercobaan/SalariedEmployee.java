@@ -1,4 +1,4 @@
-package Tugas7;
+package Tugas7.AnalisisPercobaan;
 
 import java.time.LocalDate;
 
